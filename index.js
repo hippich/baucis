@@ -35,7 +35,7 @@ baucis.empty = function () {
 baucis.model = function (name, source) {
   function getter () {
     return models.filter(function (model) {
-      return model.singular() === name;
+      return model.modelName() === name;
     })[0];
   };
   function setter () {
@@ -45,6 +45,7 @@ baucis.model = function (name, source) {
     });
     if (keys.length === 0) model = Model(mongoose.model(name, source));
     else model = Model(mongoose.model(keys[0]));
+    model.modelName(name);
     model.singular(name);
     models.push(model);
     return model;

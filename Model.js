@@ -8,7 +8,8 @@ var Model = module.exports = deco(function (source, protect) {
 
   if (!source) throw BaucisError.Configuration('Source must be set');
 
-	protect.property('schema');
+  protect.property('modelName');
+  protect.property('schema');
   protect.property('singular');
   protect.property('plural');
   protect.property('source', undefined, function (source) {
